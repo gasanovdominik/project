@@ -1,60 +1,68 @@
-// src/app/login/page.tsx
-
-"use client";
-
+// ✅ src/app/login/page.tsx
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
-    <div className="min-h-screen bg-[#052c42] flex items-center justify-center px-4">
-      <div className="w-full max-w-4xl bg-white rounded-2xl shadow-2xl flex overflow-hidden">
-        {/* Левая часть с изображением */}
-        <div className="w-1/2 relative hidden lg:block">
-          <img
-              src="/login-banner.jpg"
-              alt="Login Banner"
-              className="w-full h-full object-cover rounded-l-lg"
+    <div className="min-h-screen flex items-center justify-center bg-[#0b2a3a]">
+      <div className="flex w-full max-w-4xl bg-white rounded-lg overflow-hidden shadow-lg">
+        {/* Левая часть — изображение */}
+        <div className="w-1/2 hidden md:block">
+          <Image
+            src="/minecraft-airbnb.jpg"
+            alt="Login Banner"
+            width={600}
+            height={800}
+            className="h-full w-full object-cover"
           />
         </div>
 
-        {/* Правая часть с формой */}
-        <div className="w-full lg:w-1/2 p-8 flex flex-col justify-center">
-          <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Login</h2>
-          <input
-            type="email"
-            placeholder="Email"
-            className="mb-4 px-4 py-3 border rounded w-full focus:outline-none focus:ring"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Пароль"
-            className="mb-4 px-4 py-3 border rounded w-full focus:outline-none focus:ring"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+        {/* Правая часть — форма */}
+        <div className="w-full md:w-1/2 p-10">
+          <Image
+            src="/login-title.png"
+            alt="Login Title"
+            width={250}
+            height={80}
+            className="mx-auto mb-4"
           />
 
-          <button className="w-full bg-[#052c42] text-white py-3 rounded font-bold hover:bg-[#021d2b] transition">
-            SIGN IN
-          </button>
+          <form className="space-y-4">
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full p-3 border border-gray-300 rounded"
+            />
+            <input
+              type="password"
+              placeholder="Пароль"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-3 border border-gray-300 rounded"
+            />
+            <button
+              type="submit"
+              className="w-full bg-[#002c45] text-white py-3 rounded font-semibold hover:bg-[#024563]"
+            >
+              Войти
+            </button>
+          </form>
 
-          <Link
-            href="/register"
-            className="w-full text-center mt-4 py-3 bg-gray-100 rounded font-semibold text-[#052c42] hover:bg-gray-200 transition block"
-          >
-            CREATE AN ACCOUNT
-          </Link>
+          <p className="text-center text-sm text-blue-600 mt-4">
+            Нет аккаунта? <Link href="/register">Зарегистрироваться</Link>
+          </p>
         </div>
       </div>
     </div>
   );
 }
+
 
 
 
